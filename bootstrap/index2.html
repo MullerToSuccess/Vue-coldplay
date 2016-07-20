@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>ColdPlay</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 400 15px/1.8 Lato, sans-serif;
+            color: #777;
+        }
+        h3, h4 {
+            margin: 10px 0 30px 0;
+            letter-spacing: 10px;
+            font-size: 20px;
+            color: #111;
+        }
+        .container {
+            padding: 80px 120px;
+        }
+        .person {
+            margin-bottom: 25px;
+            width: 80%;
+            height: 80%;
+            opacity: 0.7;
+        }
+        .person:hover {
+            opacity: 1;
+        }
+        .carousel-inner img {
+            -webkit-filter: grayscale(90%);
+            filter: grayscale(90%); /* make all photos black and white */
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+        }
+        .carousel-caption h3 {
+            color: #fff !important;
+        }
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+            }
+        }
+        .bg-1 {
+            background: #2d2d30;
+            color: #bdbdbd;
+        }
+        .bg-1 h3 {color: #fff;}
+        .bg-1 p {font-style: italic;}
+        .list-group-item:first-child {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+        .list-group-item:last-child {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .thumbnail {
+            padding: 0 0 15px 0;
+            border: none;
+            border-radius: 0;
+        }
+        .thumbnail p {
+            margin-top: 15px;
+            color: #555;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #f1f1f1;
+            border-radius: 0;
+            transition: .2s;
+        }
+        .btn:hover, .btn:focus {
+            border: 1px solid #333;
+            background-color: #fff;
+            color: #000;
+        }
+        .modal-header, h4, .close {
+            background-color: #333;
+            color: #fff !important;
+            text-align: center;
+            font-size: 30px;
+        }
+        .modal-header, .modal-body {
+            padding: 40px 50px;
+        }
+        .nav-tabs li a {
+            color: #777;
+        }
+        #googleMap {
+            width: 100%;
+            height: 400px;
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+        .navbar {
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 0;
+            background-color: #2d2d30;
+            border: 0;
+            font-size: 11px !important;
+            letter-spacing: 4px;
+            opacity: 0.9;
+        }
+        .navbar li a, .navbar .navbar-brand {
+            color: #d5d5d5 !important;
+        }
+        .navbar-nav li a:hover {
+            color: #fff !important;
+        }
+        .navbar-nav li.active a {
+            color: #fff !important;
+            background-color: #29292c !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+        }
+        .navbar-brand:hover{
+
+        }
+        .open .dropdown-toggle {
+            color: #fff;
+            background-color: #555 !important;
+        }
+        .dropdown-menu li a {
+            color: #000 !important;
+        }
+        .dropdown-menu li a:hover {
+            background-color: red !important;
+        }
+        footer {
+            background-color: #2d2d30;
+            color: #f5f5f5;
+            padding: 32px;
+        }
+        footer a {
+            color: #f5f5f5;
+        }
+        footer a:hover {
+            color: #777;
+            text-decoration: none;
+        }
+        .form-control {
+            border-radius: 0;
+        }
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">ColdPlay</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#myPage">主页</a></li>
+                <li><a href="#band">乐队</a></li>
+                <li><a href="#tour">专辑</a></li>
+                <li><a href="#contact">反馈</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">演唱会</a></li>
+                        <li><a href="#">公益</a></li>
+                        <li><a href="#">其它</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="img/cp2.jpg" alt="New York" >
+            <div class="carousel-caption">
+                <h3>Working</h3>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="img/cp3.jpg" alt="Chicago">
+            <div class="carousel-caption">
+                <h3>Thinking</h3>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="img/cp4.jpg" alt="Los Angeles">
+            <div class="carousel-caption">
+                <h3>Highing</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Container (coldplay简介) -->
+<div id="band" class="container text-center">
+    <h3>ColdPlay</h3>
+    <p><em>乐队简介</em></p>
+    <p class="well">酷玩乐队（Coldplay）是成立于1996年的<em>英伦摇滚乐队</em>，现任成员有主唱兼键盘手<strong>克里斯·马汀</strong>、贝斯手<strong>Guy Berryman</strong>、吉他手<strong>强尼·巴克蓝</strong>和鼓手<strong>威尔·查平</strong>。2001年，乐队的首张录音室专辑《Parachutes》获得第21届全英音乐奖最佳英国专辑奖，次年又获得第44届格莱美奖最佳另类音乐专辑奖，为乐队在全球打开了知名度。2003年，乐队的第二张录音室专辑《A Rush of Blood to the Head》获得了第45届格莱美奖最佳另类音乐专辑奖。2005年，乐队发行的第三张录音室专辑《X&Y》在20个国家的音乐排行榜夺榜首位置，成为了当年全球销量最高的专辑。2009年，乐队第四张录音室专辑《Viva La Vida》获得了第51届格莱美奖最佳摇滚音乐专辑奖。2011年，乐队发行的第五张录音室专辑《Mylo Xyloto》在34个国家的音乐排行榜登顶，也成为了当年英国销量最高的摇滚专辑。2014年12月6日，乐队第六张录音室专辑《Ghost Stories》获得第57届格莱美最佳流行演唱专辑奖提名。2015年12月4日，乐队第七张录音室专辑《A Head Full Of Dreams》发行。</p>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <p class="text-center"><strong>Chris Martin</strong></p><br>
+            <a href="#demo" data-toggle="collapse">
+                <img src="img/Chris_Martin.jpg" class="img-thumbnail person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo" class="collapse">
+                <p>Musician</p>
+                <p>Loves long walks on the beach</p>
+                <p>2 March 1977 </p>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <p class="text-center"><strong>Guy Berryman</strong></p><br>
+            <a href="#demo2" data-toggle="collapse">
+                <img src="img/Guy%20Berryman.gif" class="img-thumbnail person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo2" class="collapse">
+                <p>Drummer</p>
+                <p>Loves drummin'</p>
+                <p>Member since 1988</p>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <p class="text-center"><strong>Jonny Buckland</strong></p><br>
+            <a href="#demo3" data-toggle="collapse">
+                <img src="img/Jonny%20Buckland.jpg" class="img-thumbnail person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo3" class="collapse">
+                <p>Bass player</p>
+                <p>Loves math</p>
+                <p>11 September 197</p>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <p class="text-center"><strong>Will Champion</strong></p><br>
+            <a href="#demo4" data-toggle="collapse">
+                <img src="img/Will_Champion.jpg" class="img-thumbnail person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo4" class="collapse">
+                <p>Drums player</p>
+                <p>Loves math</p>
+                <p>	31 July 1978</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container (专辑介绍) -->
+<div id="tour" class="bg-1">
+    <div class="container">
+        <h2 class="text-center">专辑</h2>
+        <p class="text-center">Albulm</p>
+        <!--专辑展示-->
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="img/bg2.jpg" alt="Paris" width="400" height="300">
+                    <p><strong>Paris</strong></p>
+                    <p>Friday 27 November 2015</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy IT</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="img/bg2.jpg" alt="New York" width="400" height="300">
+                    <p><strong>New York</strong></p>
+                    <p>Saturday 28 November 2015</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy IT</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="img/bg2.jpg" alt="San Francisco" width="400" height="300">
+                    <p><strong>San Francisco</strong></p>
+                    <p>Sunday 29 November 2015</p>
+                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy IT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
+                            <input type="number" class="form-control" id="psw" placeholder="How many?">
+                        </div>
+                        <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-block">Pay
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                    <p>Need <a href="#">help?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container (歌迷反馈) -->
+<div id="contact" class="container">
+    <h3 class="text-center">歌迷反馈</h3>
+    <p class="text-center"><em>感谢大家对 <strong>ColdPlay</strong> 的支持！</em></p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p>写下你的意见和想说的，让ColdPlay知道!</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span> Chengdu, CHN</p>
+            <p><span class="glyphicon glyphicon-phone"></span> Phone: +028 8888888</p>
+            <p><span class="glyphicon glyphicon-envelope"></span> Email: Greatpage1@gmail.com</p>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+            <br>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <button class="btn pull-right" type="submit">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3 class="text-center">歌迷留言</h3>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Mike</a></li>
+        <li><a data-toggle="tab" href="#menu1">Chandler</a></li>
+        <li><a data-toggle="tab" href="#menu2">Peter</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h2>Mike Ross, Manager</h2>
+            <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h2>Chandler Bing, Guitarist</h2>
+            <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h2>Peter Griffin, Bass player</h2>
+            <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="回到顶部">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br>
+    <p>Welcome to my github:   <a href="https://github.com/MullerToSuccess">MullerToSuccess</a></p>
+</footer>
+
+<script>
+    $(document).ready(function(){
+        // Initialize Tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Add smooth scrolling to all links in navbar + footer link
+        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 900, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+    })
+</script>
+
+</body>
+</html>
+
